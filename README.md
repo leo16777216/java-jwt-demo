@@ -20,10 +20,10 @@
 2. 建立資料夾"controller"、"models"，檔案如圖所示:
 <img src="https://i.imgur.com/8dFNvoV.png" width="300px"/>
 3. 在controller資料夾中建立LoginController，並在此controller中有2個function:
-    - login()
-        - 功能: 驗證使用者帳號密碼，並回傳時限10分鐘的jwtToken。
-        - 參數: UserModel
-        - 回傳: ResponseModel
+    - login()  
+        - 功能: 驗證使用者帳號密碼，並回傳時限10分鐘的jwtToken。  
+        - 參數: UserModel  
+        - 回傳: ResponseModel  
         ```java=
         @PostMapping("/login")
         @ResponseBody
@@ -35,10 +35,10 @@
             return loginResponse.toJSONString();
         }
         ```
-    - auth()
-        - 功能: 接收從客戶端傳來的jwtToken，驗證其合法性，若合法則回傳新的jwtToken。
-        - 參數: Map<String, String>
-        - 回傳: ResponseModel
+    - auth()  
+        - 功能: 接收從客戶端傳來的jwtToken，驗證其合法性，若合法則回傳新的jwtToken。  
+        - 參數: Map<String, String>  
+        - 回傳: ResponseModel  
         ```java=
         @PostMapping("/auth")
         @ResponseBody
@@ -54,7 +54,7 @@
 ### Models
 
 4. 在上一點出現的Models:"UserModel"、"ResponseModel"，新增至"models"資料夾。
-    - UserModel 
+    - UserModel  
         ```java=
         package com.example.demo.models;
 
@@ -76,7 +76,7 @@
             }
         }
         ```
-    - ResponseModel
+    - ResponseModel  
         ```java=
         package com.example.demo.models;
 
@@ -125,10 +125,10 @@
 
         ```
         
-### Controllers
+### Controllers  
 
-5. 現在來實作controller裡的login與auth
-    - login
+5. 現在來實作controller裡的login與auth  
+    - login  
         ```java=
         @PostMapping("/login")
         public String login(@RequestBody UserModel userModel){
@@ -149,7 +149,7 @@
             return loginResponse.toJSONString();
         }
         ```
-        - 其中第九行的generateToken(username):
+        - 其中第九行的generateToken(username):  
             ```java=
             String SECRET_KEY = "secretKey";
             Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY);
@@ -174,7 +174,7 @@
             > <img src="https://i.imgur.com/aUGDrZ7.png"/>
 
             3. 最後在sign即可得到一組jwt
-    - auth
+    - auth  
         ```java=
         String SECRET_KEY = "secretKey";
         Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY);
@@ -188,8 +188,8 @@
             return username;
         }
         ```
-        - 第4行的jwtVerifer是拿來驗證token的，若token不合法會拋出"JWTVerificationException"的例外錯誤，如此便可知道是否驗證成功。
-        - 驗證成功後所傳回的DecodedJWT物件，裡面就會有token裡的所有資料，可以透過getClaim來取得payload裡指定key的值。
+        - 第4行的jwtVerifer是拿來驗證token的，若token不合法會拋出"JWTVerificationException"的例外錯誤，如此便可知道是否驗證成功。  
+        - 驗證成功後所傳回的DecodedJWT物件，裡面就會有token裡的所有資料，可以透過getClaim來取得payload裡指定key的值。  
 
-## 原始碼
+## 原始碼  
 [Github](https://github.com/s16777216/java-jwt-demo)
