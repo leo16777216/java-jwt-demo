@@ -12,14 +12,14 @@
 
 ### 建立基本Spring Boot專案
 1. 建立基本Spring Boot 專案使用gradle，包含 spring-boot-starter-web。
-    - gradle.build長這樣。
-<img src="https://i.imgur.com/bcMHCKa.png"/>
+    - gradle.build長這樣。  
+<img src="https://i.imgur.com/bcMHCKa.png" width="75%"/>
 
 ### 建立目錄與函式名稱
 
 2. 建立資料夾"controller"、"models"，檔案如圖所示:  
-    <img src="https://i.imgur.com/8dFNvoV.png" width="300px"/>
-3. 在controller資料夾中建立LoginController，並在此controller中有2個function:
+    <img src="https://i.imgur.com/8dFNvoV.png" width="300px"/>  
+3. 在controller資料夾中建立LoginController，並在此controller中有2個function:  
     - login()  
         - 功能: 驗證使用者帳號密碼，並回傳時限10分鐘的jwtToken。  
         - 參數: UserModel  
